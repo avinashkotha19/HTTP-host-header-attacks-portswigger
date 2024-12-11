@@ -1,0 +1,15 @@
+Lab: Web cache poisoning via ambiguous requests
+
+Steps:
+
+1. In burp browser, open the lab and click on home page.
+2. In HTTP history, click on GET / request and send it to repeater.
+3. Try to change the host. But you didn't get the request with a status code to 200. It also tells that cache doesn't hit. Cache: Miss.
+4. Change the parameter from GET / to GET /?cb=hacker and add the host as Host: hyper123 .
+5. Send the request and you notice that there is a hit to cache. If it is not hit send the request again up to when you notice that cache: hit.
+6. When it is a hit you found a URL which contains /resources/js/tracking.js. Even you remove the added host and send the request again, you notice that it is being hit.
+7. Go to exploit server. Change the file from /exploit to /resources/js/tracking.js and Body from Hello, world! to alert(document.cookie).
+8. Add the HOST in burp which has your exploit server Id.exploit-server.net and change the parameter from GET /?cb=hacker to GET / .
+9. Send the request to solve the lab.
+
+

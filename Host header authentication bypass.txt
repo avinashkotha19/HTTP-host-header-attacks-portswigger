@@ -1,0 +1,9 @@
+Lab: Host header authentication bypass
+
+steps:
+1. send the GET  / request which has a status code : 200 to burp repeater. Notice that the request contains host.
+2. Change the host name to hyper123 and send the request again. Again the request has a status code is 200.
+3. browse for /robots.txt there you can found that admin panel at /admin.
+4. Browse for /admin. You don't have to  access the admin panel. But you got a error message which is only accessed by local users.
+5. Send the GET /admin from HTTP history to repeater and change the hostname to localhost. Send the request.
+6. You can observe that you can access the admin panel. Now change the request line form GET /admin to GET /admin/delete?username=carlos and send the request to delete the "carlos" to solve the lab.
